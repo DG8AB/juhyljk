@@ -2,91 +2,69 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>dg8ab AI Chatbot</title>
+  <title>dg8ab AI Chatbot (Puter.js)</title>
   <script src="https://js.puter.com/v2/"></script>
   <style>
     body {
-      background: #181f2e;
+      background: #101e1f;
       font-family: 'Segoe UI', Arial, sans-serif;
-      margin: 0; padding: 0;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
       min-height: 100vh;
     }
     .dg8ab-chatbot-container {
-      max-width: 1100px;
+      max-width: 520px;
       min-height: 80vh;
       margin: 40px auto 0 auto;
-      background: #222b3a;
-      border-radius: 28px;
-      box-shadow: 0 4px 32px rgba(18, 183, 215, 0.16);
+      background: #163944;
+      border-radius: 22px;
+      box-shadow: 0 4px 32px rgba(30, 100, 100, 0.15);
       padding: 0;
       display: flex;
       flex-direction: column;
       overflow: hidden;
-      border: 2px solid #b2ff59;
+      border: 2px solid #f5b041;
     }
     .dg8ab-header {
-      background: linear-gradient(90deg, #b2ff59 0%, #5affe7 100%);
-      color: #222b3a;
-      padding: 32px;
-      font-size: 2.1em;
+      background: linear-gradient(90deg, #f5b041 0%, #5dade2 100%);
+      color: #163944;
+      padding: 26px;
+      font-size: 1.6em;
       font-weight: bold;
       text-align: center;
       letter-spacing: 2px;
-      border-bottom: 2px solid #5affe7;
-      display: flex; align-items: center; justify-content: space-between;
-    }
-    .dg8ab-header .user {
-      font-size: 0.7em;
-      font-weight: normal;
-      color: #222b3a;
-      background: #5affe7;
-      padding: 7px 20px;
-      border-radius: 10px;
-      margin-left: 18px;
-    }
-    .dg8ab-header .logout {
-      font-size: 1em;
-      color: #222b3a;
-      background: #b2ff59;
-      padding: 7px 17px;
-      border-radius: 10px;
-      text-decoration: none;
-      border: 1px solid #222b3a;
-      margin-left: 32px;
-      transition: background .2s;
-    }
-    .dg8ab-header .logout:hover {
-      background: #181f2e;
-      color: #b2ff59;
+      border-bottom: 2px solid #5dade2;
     }
     .dg8ab-messages {
       flex: 1;
-      padding: 42px 64px 32px 64px;
+      padding: 28px 16px 18px 16px;
       overflow-y: auto;
-      background: #222b3a;
-      color: #f5f7fa;
-      font-size: 1.3em;
+      background: #163944;
+      color: #fdf6e3;
+      font-size: 1.07em;
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 16px;
     }
     .dg8ab-message.user {
       align-self: flex-end;
-      background: #5affe7;
-      color: #222b3a;
-      border-radius: 22px 22px 0 22px;
-      padding: 18px 28px;
-      max-width: 60%;
-      box-shadow: 0 2px 8px rgba(90,255,231,0.10);
+      background: #5dade2;
+      color: #163944;
+      border-radius: 15px 15px 0 15px;
+      padding: 11px 16px;
+      max-width: 83%;
+      box-shadow: 0 2px 8px rgba(93,173,226,0.13);
     }
     .dg8ab-message.bot {
       align-self: flex-start;
-      background: #b2ff59;
-      color: #222b3a;
-      border-radius: 22px 22px 22px 0;
-      padding: 18px 28px;
-      max-width: 60%;
-      box-shadow: 0 2px 8px rgba(178,255,89,0.11);
+      background: #f5b041;
+      color: #163944;
+      border-radius: 15px 15px 15px 0;
+      padding: 11px 16px;
+      max-width: 83%;
+      box-shadow: 0 2px 8px rgba(245,176,65,0.13);
       word-break: break-word;
     }
     .dg8ab-message.bot svg {
@@ -96,52 +74,49 @@
       background: #fff;
       border-radius: 4px;
       padding: 5px;
-      margin: 8px 0;
+      margin: 7px 0;
     }
     .dg8ab-input-row {
       display: flex;
-      padding: 32px 64px;
-      background: #181f2e;
-      border-top: 2px solid #5affe7;
+      padding: 20px 16px;
+      background: #101e1f;
+      border-top: 2px solid #5dade2;
     }
     .dg8ab-input {
       flex: 1;
-      padding: 18px 24px;
+      padding: 12px 18px;
       border: none;
-      border-radius: 16px;
-      font-size: 1.3em;
+      border-radius: 12px;
+      font-size: 1em;
       outline: none;
-      background: #334155;
-      color: #f5f7fa;
+      background: #26535c;
+      color: #fdf6e3;
       transition: background 0.2s;
     }
     .dg8ab-input:focus {
-      background: #495376;
+      background: #38707e;
     }
     .dg8ab-send-btn {
-      margin-left: 18px;
-      background: linear-gradient(90deg, #5affe7 0%, #b2ff59 100%);
+      margin-left: 10px;
+      background: linear-gradient(90deg, #5dade2 0%, #f5b041 100%);
       border: none;
-      color: #222b3a;
-      font-size: 1.3em;
+      color: #163944;
+      font-size: 1em;
       font-weight: bold;
-      padding: 18px 34px;
-      border-radius: 16px;
+      padding: 12px 22px;
+      border-radius: 12px;
       cursor: pointer;
       transition: background 0.2s, box-shadow 0.2s;
-      box-shadow: 0 2px 8px rgba(90,255,231,0.08), 0 1.5px 4px rgba(178,255,89,0.06);
+      box-shadow: 0 2px 8px rgba(93,173,226,0.09), 0 1.5px 4px rgba(245,176,65,0.08);
     }
     .dg8ab-send-btn:hover {
-      background: linear-gradient(90deg, #b2ff59 0%, #5affe7 100%);
+      background: linear-gradient(90deg, #f5b041 0%, #5dade2 100%);
     }
   </style>
 </head>
 <body>
   <div class="dg8ab-chatbot-container">
-    <div class="dg8ab-header">
-      <span>dg8ab AI Chatbot <span class="user">User: {{ username }}</span></span>
-      <a href="/logout" class="logout">Logout</a>
-    </div>
+    <div class="dg8ab-header">dg8ab AI Chatbot</div>
     <div class="dg8ab-messages" id="dg8ab-messages"></div>
     <form class="dg8ab-input-row" id="dg8ab-form" autocomplete="off">
       <input type="text" class="dg8ab-input" id="dg8ab-input" placeholder="Type your message..." autofocus required />
@@ -149,16 +124,25 @@
     </form>
   </div>
   <script>
-    const username = "{{ username }}";
     const messagesEl = document.getElementById('dg8ab-messages');
     const inputEl = document.getElementById('dg8ab-input');
     const formEl = document.getElementById('dg8ab-form');
     let chatHistory = [];
 
+    // SVG intent detection: prompt for SVG if user is asking for images/diagrams
+    function isSVGIntent(msg) {
+      return /\b(draw|sketch|diagram|icon|logo|illustrat(e|ion)|map|graph|picture|image|scene|visual|show.*how|design|vector|svg)\b/i.test(msg);
+    }
+
+    // Detect if string is SVG markup
+    function isSVGResponse(txt) {
+      return txt.trim().startsWith('<svg');
+    }
+
     function appendMessage(role, text) {
       const msgDiv = document.createElement('div');
       msgDiv.className = `dg8ab-message ${role}`;
-      if (role === 'bot' && text.trim().startsWith('<svg')) {
+      if (role === 'bot' && isSVGResponse(text)) {
         msgDiv.innerHTML = text;
       } else {
         msgDiv.textContent = text;
@@ -170,7 +154,15 @@
     async function sendMessage(message) {
       appendMessage('user', message);
       let messages = [...chatHistory, {role: 'user', content: message}];
+      // Add SVG-only system prompt if user's prompt is for image/diagram/svg
+      if (isSVGIntent(message)) {
+        messages = [
+          {role: "system", content: "You are an SVG image generator. Only output valid SVG images as responses."},
+          ...messages
+        ];
+      }
       inputEl.value = '';
+      // Show loading message
       const loadingDiv = document.createElement('div');
       loadingDiv.className = 'dg8ab-message bot';
       loadingDiv.textContent = '...';
@@ -178,16 +170,12 @@
       messagesEl.scrollTop = messagesEl.scrollHeight;
 
       try {
-        const res = await fetch('/api/chat', {
-          method: 'POST',
-          headers: {'Content-Type': 'application/json'},
-          body: JSON.stringify({ prompt: message, history: chatHistory }),
-        });
-        const data = await res.json();
+        // Use Claude-3-7-sonnet, test mode enabled
+        const response = await puter.ai.chat(messages, true, { model: 'claude-3-7-sonnet' });
         messagesEl.removeChild(loadingDiv);
-        appendMessage('bot', data.response);
+        appendMessage('bot', response);
         chatHistory.push({role: 'user', content: message});
-        chatHistory.push({role: 'assistant', content: data.response});
+        chatHistory.push({role: 'assistant', content: response});
       } catch (err) {
         messagesEl.removeChild(loadingDiv);
         appendMessage('bot', 'Error: ' + (err.message || 'Failed to get a response.'));
@@ -197,24 +185,16 @@
     formEl.addEventListener('submit', function(e) {
       e.preventDefault();
       const msg = inputEl.value.trim();
-      if (msg) sendMessage(msg);
+      if (msg) {
+        sendMessage(msg);
+      }
     });
 
-    window.addEventListener('DOMContentLoaded', async () => {
-      const res = await fetch('/api/messages');
-      const history = await res.json();
-      for (const msg of history) {
-        appendMessage('user', msg.prompt);
-        appendMessage('bot', msg.response);
-        chatHistory.push({role: 'user', content: msg.prompt});
-        chatHistory.push({role: 'assistant', content: msg.response});
-      }
-      if (history.length === 0) {
-        setTimeout(() => {
-          appendMessage('bot', "Hello! I'm dg8ab, your AI chatbot. How can I help you today?");
-          chatHistory.push({role: 'assistant', content: "Hello! I'm dg8ab, your AI chatbot. How can I help you today?"});
-        }, 200);
-      }
+    window.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => {
+        appendMessage('bot', "Hello! I'm dg8ab, your AI chatbot. How can I help you today?");
+        chatHistory.push({role: 'assistant', content: "Hello! I'm dg8ab, your AI chatbot. How can I help you today?"});
+      }, 200);
     });
   </script>
 </body>
