@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login | dg8ab</title>
+  <style>
+    body { background: #181f2e; color: #f5f7fa; font-family: Segoe UI, Arial; display: flex; height:100vh; align-items:center; justify-content:center; }
+    .box { background: #24283c; border-radius: 18px; box-shadow: 0 2px 16px #0004; padding:38px 56px; min-width: 340px;}
+    h2 { color: #5affe7; }
+    input[type=text], input[type=password] { width: 100%; padding: 14px; margin: 14px 0; border-radius: 8px; border: none; background: #334155; color: #fff; }
+    button { width: 100%; padding: 14px; margin: 18px 0 0 0; border-radius: 8px; background: #5affe7; color: #181f2e; border: none; font-weight: bold; font-size: 1.1em;}
+    a { color: #b2ff59;}
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h2>Login to dg8ab</h2>
+    <form method="post">
+      <input type="text" name="username" placeholder="Username" required autocomplete="username">
+      <input type="password" name="password" placeholder="Password" required autocomplete="current-password">
+      <button type="submit">Login</button>
+    </form>
+    <p>Don't have an account? <a href="{{ url_for('signup') }}">Sign up</a></p>
+    {% if error %}<div style="color:#f55;margin-top:10px">{{error}}</div>{% endif %}
+  </div>
+</body>
+</html>
